@@ -1,0 +1,8 @@
+fastboot getvar version-bootloader
+fastboot getvar version-baseband
+fastboot getvar serialno
+fastboot getvar hw-revision
+fastboot getvar current-slot
+fastboot getvar slot-count
+fastboot getvar secure
+fastboot getvar product
