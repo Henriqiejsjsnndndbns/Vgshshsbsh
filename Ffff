@@ -1,0 +1,17 @@
+mkdir -p ~/android-root-agent
+cd ~/android-root-agent
+
+{
+    echo '=== FASTBOOT FORENSICS ==='
+    date -Is
+    echo
+    fastboot devices
+    echo
+    fastboot getvar product 2>&1
+    fastboot getvar version-bootloader 2>&1
+    fastboot getvar version-baseband 2>&1
+    fastboot getvar serialno 2>&1
+    fastboot getvar current-slot 2>&1
+    fastboot getvar slot-count 2>&1
+    fastboot getvar secure 2>&1
+} | tee fastboot_forensics.txt
