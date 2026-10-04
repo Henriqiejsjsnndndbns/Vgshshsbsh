@@ -1,0 +1,5 @@
+fastboot devices
+fastboot getvar product 2>&1
+fastboot getvar secure 2>&1
+fastboot getvar unlocked 2>&1
+fastboot getvar current-slot 2>&1
