@@ -1,0 +1,20 @@
+echo "===== BENCHMARK CPU ====="
+time (for i in $(seq 1 3000000); do : $i; done)
+
+echo
+echo "===== MEMÓRIA ====="
+free -h
+
+echo
+echo "===== SWAP ====="
+swapon --show
+
+echo
+echo "===== DISCO ====="
+sync
+dd if=/dev/zero of=/tmp/jarvis_test.bin bs=1M count=256 conv=fdatasync status=progress
+rm -f /tmp/jarvis_test.bin
+
+echo
+echo "===== CPU FLAGS ====="
+grep -m1 '^flags' /proc/cpuinfo
