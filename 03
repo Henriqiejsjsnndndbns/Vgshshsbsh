@@ -1,0 +1,15 @@
+echo "===== DMI MEMORY LIMIT ====="
+sudo dmidecode -t memory | grep -E 'Maximum Capacity|Number Of Devices|Size:|Type:|Speed:|Part Number:'
+
+echo
+echo "===== MEMORY DEVICES ====="
+sudo dmidecode -t 16 2>/dev/null
+sudo dmidecode -t 17 2>/dev/null
+
+echo
+echo "===== BIOS ====="
+sudo dmidecode -t bios | grep -E 'Vendor:|Version:|Release Date:|BIOS Revision:'
+
+echo
+echo "===== MOTHERBOARD ====="
+sudo dmidecode -t system | grep -E 'Manufacturer:|Product Name:|Version:|Serial Number:'
