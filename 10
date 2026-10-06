@@ -1,0 +1,6 @@
+echo "===== USB NETWORK TEST ====="
+ip -4 addr show usb0
+echo
+ip route get 192.168.168.105
+echo
+ping -c 4 -W 2 192.168.168.105
