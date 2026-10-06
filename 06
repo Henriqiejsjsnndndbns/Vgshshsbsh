@@ -1,0 +1,22 @@
+echo "===== RAM ====="
+free -h
+
+echo
+echo "===== TOP PROCESSOS POR RAM ====="
+ps aux --sort=-%mem | head -20
+
+echo
+echo "===== TOP PROCESSOS POR CPU ====="
+ps aux --sort=-%cpu | head -20
+
+echo
+echo "===== SERVIÇOS ATIVOS ====="
+systemctl --type=service --state=running --no-pager
+
+echo
+echo "===== TEMPO DE BOOT ====="
+systemd-analyze
+
+echo
+echo "===== PROCESSOS ====="
+ps -e --no-headers | wc -l
