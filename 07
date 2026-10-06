@@ -1,0 +1,13 @@
+echo "===== REDE ====="
+ip -br link
+
+echo
+ip -br addr
+
+echo
+echo "===== ROTAS ====="
+ip route
+
+echo
+echo "===== USB ====="
+lsusb | grep -Ei 'android|motorola|google|rndis|usb'
