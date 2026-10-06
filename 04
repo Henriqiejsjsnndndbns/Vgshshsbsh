@@ -1,0 +1,22 @@
+echo "===== CPU / SOCKET ====="
+sudo dmidecode -t processor 2>/dev/null | grep -E 'Socket Designation:|Type:|Family:|Manufacturer:|Version:|Voltage:|External Clock:|Max Speed:|Current Speed:|Upgrade:'
+
+echo
+echo "===== CHIPSET / PCI ====="
+lspci -nn | grep -Ei 'Host bridge|Memory controller|ISA bridge|LPC|SMBus|Northbridge|Southbridge'
+
+echo
+echo "===== MOTHERBOARD ====="
+sudo dmidecode -t baseboard 2>/dev/null | grep -E 'Manufacturer:|Product Name:|Version:|Serial Number:|Location In Chassis:'
+
+echo
+echo "===== FULL PCI ====="
+lspci -nnk
+
+echo
+echo "===== CPU DETAILS ====="
+cat /proc/cpuinfo
+
+echo
+echo "===== ACPI TABLES ====="
+sudo dmidecode -t bios 2>/dev/null
