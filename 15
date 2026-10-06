@@ -1,0 +1,6 @@
+echo
+echo "===== SSH SERVER ====="
+command -v sshd || true
+systemctl is-enabled ssh 2>/dev/null || true
+systemctl is-active ssh 2>/dev/null || true
+ss -lntp 2>/dev/null | grep ':22 ' || true
