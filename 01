@@ -1,0 +1,47 @@
+echo '===== SISTEMA ====='
+uname -a
+echo
+cat /etc/os-release
+
+echo
+echo '===== CPU ====='
+lscpu
+
+echo
+echo '===== MEMÓRIA ====='
+free -h
+echo
+sudo dmidecode -t memory 2>/dev/null | grep -E 'Size:|Type:|Speed:|Manufacturer:|Part Number:' || true
+
+echo
+echo '===== GPU / PCI ====='
+lspci -nnk | grep -A3 -Ei 'VGA|3D|Display'
+
+echo
+echo '===== ARMAZENAMENTO ====='
+lsblk -o NAME,SIZE,TYPE,FSTYPE,MODEL,ROTA,TRAN,MOUNTPOINTS
+
+echo
+echo '===== DISCO ====='
+sudo fdisk -l 2>/dev/null | grep -E '^Disk /dev/|Disk model:' || true
+
+echo
+echo '===== ARQUITETURA ====='
+getconf LONG_BIT
+uname -m
+
+echo
+echo '===== INSTRUÇÕES CPU ====='
+lscpu | grep -E 'Model name|CPU\(s\)|Thread|Core|Socket|MHz|Flags'
+
+echo
+echo '===== TEMPERATURA ====='
+sensors 2>/dev/null || echo 'lm-sensors não disponível'
+
+echo
+echo '===== USB ====='
+lsusb 2>/dev/null | head -30
+
+echo
+echo '===== BATERIA / ENERGIA ====='
+upower -e 2>/dev/null | head -20 || true
